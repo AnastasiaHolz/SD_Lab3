@@ -33,7 +33,6 @@ class Patient {
 
 public class Main {
 
-    // 🔹 Метод безпечного введення числа
     public static int inputInt(Scanner sc, String message) {
         while (true) {
             try {
@@ -45,7 +44,6 @@ public class Main {
         }
     }
 
-    // 🔹 Вивід таблиці
     public static void printPatients(Patient[] patients) {
         System.out.printf("%-5s %-15s %-20s %-15s %-10s %-15s\n",
                 "ID", "Прізвище", "Адреса", "Телефон", "Карта", "Діагноз");
@@ -55,7 +53,6 @@ public class Main {
         }
     }
 
-    // 🔹 Пошук за діагнозом
     public static void searchByDiagnosis(Patient[] patients, String diagnosis) {
         boolean found = false;
 
@@ -72,7 +69,6 @@ public class Main {
         }
     }
 
-    // 🔹 Пошук за діапазоном картки
     public static void searchByCardRange(Patient[] patients, int min, int max) {
         boolean found = false;
 
@@ -118,16 +114,13 @@ public class Main {
             patients[i] = new Patient(id, surname, address, phone, card, diagnosis);
         }
 
-        // 🔹 Вивід таблиці
         System.out.println("\n=== Список пацієнтів ===");
         printPatients(patients);
 
-        // 🔹 Пошук за діагнозом
         System.out.print("\nВведіть діагноз для пошуку: ");
         String diag = sc.nextLine();
         searchByDiagnosis(patients, diag);
 
-        // 🔹 Пошук за діапазоном
         int min = inputInt(sc, "\nМінімальний номер картки: ");
         int max = inputInt(sc, "Максимальний номер картки: ");
         searchByCardRange(patients, min, max);
