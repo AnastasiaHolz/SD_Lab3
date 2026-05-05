@@ -39,14 +39,14 @@ public class Main {
                 System.out.print(message);
                 return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println(" Помилка! Введіть ціле число.");
+                System.out.println(" Error! Enter an intager.");
             }
         }
     }
 
     public static void printPatients(Patient[] patients) {
         System.out.printf("%-5s %-15s %-20s %-15s %-10s %-15s\n",
-                "ID", "Прізвище", "Адреса", "Телефон", "Карта", "Діагноз");
+                "ID", "Surname", "Address", "Phone", "Card", "Diagnosis");
         System.out.println("-------------------------------------------------------------------------------");
         for (Patient p : patients) {
             p.print();
@@ -56,7 +56,7 @@ public class Main {
     public static void searchByDiagnosis(Patient[] patients, String diagnosis) {
         boolean found = false;
 
-        System.out.println("\nРезультати пошуку:");
+        System.out.println("\nResults:");
         for (Patient p : patients) {
             if (p.getDiagnosis().equalsIgnoreCase(diagnosis)) {
                 p.print();
@@ -65,14 +65,14 @@ public class Main {
         }
 
         if (!found) {
-            System.out.println("Пацієнтів з таким діагнозом не знайдено.");
+            System.out.println("No patients with this diagnosis were found.");
         }
     }
 
     public static void searchByCardRange(Patient[] patients, int min, int max) {
         boolean found = false;
 
-        System.out.println("\nРезультати пошуку:");
+        System.out.println("\nResults:");
         for (Patient p : patients) {
             if (p.getMedicalCardNumber() >= min && p.getMedicalCardNumber() <= max) {
                 p.print();
@@ -81,7 +81,7 @@ public class Main {
         }
 
         if (!found) {
-            System.out.println("Пацієнтів у цьому діапазоні не знайдено.");
+            System.out.println("No patients found in this range.");
         }
     }
 
@@ -91,38 +91,38 @@ public class Main {
         int n = 5;
         Patient[] patients = new Patient[n];
 
-        System.out.println("=== Введення даних пацієнтів ===");
+        System.out.println("=== Patient data entry ===");
 
         for (int i = 0; i < n; i++) {
-            System.out.println("\nПацієнт #" + (i + 1));
+            System.out.println("\nPatient #" + (i + 1));
 
             int id = inputInt(sc, "ID: ");
-            System.out.print("Прізвище: ");
+            System.out.print("Surname: ");
             String surname = sc.nextLine();
 
-            System.out.print("Адреса: ");
+            System.out.print("Adress: ");
             String address = sc.nextLine();
 
-            System.out.print("Телефон: ");
+            System.out.print("Phone: ");
             String phone = sc.nextLine();
 
-            int card = inputInt(sc, "Номер медичної картки: ");
+            int card = inputInt(sc, "Card: ");
 
-            System.out.print("Діагноз: ");
+            System.out.print("Diagnosis: ");
             String diagnosis = sc.nextLine();
 
             patients[i] = new Patient(id, surname, address, phone, card, diagnosis);
         }
 
-        System.out.println("\n=== Список пацієнтів ===");
+        System.out.println("\n=== Patient list ===");
         printPatients(patients);
 
-        System.out.print("\nВведіть діагноз для пошуку: ");
+        System.out.print("\nEnter a diagnosis to search: ");
         String diag = sc.nextLine();
         searchByDiagnosis(patients, diag);
 
-        int min = inputInt(sc, "\nМінімальний номер картки: ");
-        int max = inputInt(sc, "Максимальний номер картки: ");
+        int min = inputInt(sc, "\nMinimum card number: ");
+        int max = inputInt(sc, "Maximum card number: ");
         searchByCardRange(patients, min, max);
 
         sc.close();
