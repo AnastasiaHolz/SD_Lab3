@@ -39,7 +39,7 @@ public class Main {
                 System.out.print(message);
                 return Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("❌ Помилка! Введіть ціле число.");
+                System.out.println(" Помилка! Введіть ціле число.");
             }
         }
     }
@@ -65,7 +65,7 @@ public class Main {
         }
 
         if (!found) {
-            System.out.println("❗ Пацієнтів з таким діагнозом не знайдено.");
+            System.out.println("Пацієнтів з таким діагнозом не знайдено.");
         }
     }
 
@@ -81,7 +81,7 @@ public class Main {
         }
 
         if (!found) {
-            System.out.println("❗ Пацієнтів у цьому діапазоні не знайдено.");
+            System.out.println("Пацієнтів у цьому діапазоні не знайдено.");
         }
     }
 
